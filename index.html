@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>HAC App</title>
+</head>
+
+<body>
+  <style>
+    * {
+      box-sizing: border-box;
+      font-family: Arial, Helvetica, sans-serif;
+    }
+
+    body {
+      background-color: #f5f5f5;
+    }
+
+    .container {
+      margin: auto;
+      display: grid;
+      place-content: center;
+      margin-top: 50px;
+      max-width: 800px;
+    }
+
+    .container h1 {
+      font-size: 3em;
+      text-align: center;
+      margin-bottom: 50px;
+    }
+
+    .row {
+      margin-bottom: 50px;
+    }
+
+    p {
+      text-align: left;
+    }
+
+    img {
+      width: 200px;
+      height: 200px;
+    }
+
+    h2 {
+      text-align: center;
+    }
+
+    .row.sticky-top {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      position: sticky;
+      top: 0;
+      /* background-color: #f5f5f5; */
+      background: linear-gradient(to bottom, #2980b9, #6dd5fa);
+      padding: 10px;
+      border-radius: 10px;
+    }
+  </style>
+
+  <!-- links to sections on this page  -->
+  <!-- make this section position sticky so that it pins to the top left of the page regardless of scroll -->
+  <div class="row sticky-top">
+    <div>
+      <ul>
+        <li><a href="#intro" onclick="smoothScroll(event)">Introduction</a></li>
+        <li><a href=" #setup" onclick="smoothScroll(event)">Setup the HAC App</a></li>
+        <li><a href=" #login" onclick="smoothScroll(event)">Login to app</a></li>
+      </ul>
+    </div>
+    <div>
+      <input type="Search" placeholder="Search">
+    </div>
+  </div>
+
+  <!-- main container for the page -->
+  <div id="app">
+    <div class="container">
+      <div class="row">
+        <div>
+          <h1>HAC App</h1>
+        </div>
+      </div>
+
+      <section class=" row">
+        <h2 id="intro">Introduction</h2>
+        <p>This is a guide to setting up the HAC App on your computer. The HAC App is a designed to help you work with
+          hearing aids and hearing instruments through all stages of care, from selection to order to delivery to
+          follow-up care.</p>
+      </section>
+
+      <section class="row">
+        <h2 id="setup">Setup the HAC App</h2>
+        <p>Download the 'Launch HAC' shortcut from the HAC Teams files section as shown here</p>
+        <img src="./Images/Screenshot 2023-07-22 102629.png">
+      </section>
+
+      <section class="row">
+        <h2 id="login">Login for first time</h2>
+        <p>Open the HAC App. When prompted for account information, use your NUID as the account name and
+          leave the password field blank. The next step will prompt you to create a new password.</p>
+        <img src="./Images/Screenshot 2023-07-22 102629.png">
+      </section>
+
+      <!-- end of container -->
+    </div>
+  </div>
+
+
+
+
+  <script>
+    function smoothScroll(event) {
+      event.preventDefault();
+      const targetId = event.target.getAttribute("href");
+      const targetElement = document.querySelector(targetId);
+
+      if (targetElement) {
+        targetElement.scrollIntoView({
+          behavior: "smooth",
+          block: "start"
+        });
+      }
+    }
+  </script>
+
+</body>
+
+</html>
