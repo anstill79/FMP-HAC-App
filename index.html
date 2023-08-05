@@ -4,6 +4,10 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@shoelace-style/shoelace@2.6.0/cdn/themes/light.css" />
+  <script type="module"
+    src="https://cdn.jsdelivr.net/npm/@shoelace-style/shoelace@2.6.0/cdn/shoelace-autoloader.js"></script>
+
   <title>HAC App</title>
 </head>
 
@@ -16,17 +20,19 @@
 
     body {
       background-color: #f5f5f5;
+      padding: 0 40px;
     }
 
-    .container {
+    main {
       margin: auto;
       display: grid;
       place-content: center;
       margin-top: 50px;
+      min-width: 320px;
       max-width: 900px;
     }
 
-    .container h1 {
+    main h1 {
       font-size: 3em;
       text-align: center;
       margin-bottom: 50px;
@@ -63,178 +69,223 @@
       background: linear-gradient(to bottom, #2980b9, #6dd5fa);
       padding: 10px;
       border-radius: 10px;
+      min-width: 320px;
+      max-width: 900px;
+      margin: auto;
+      height: 60px;
+      z-index: 1;
     }
 
     .italics-gray {
       color: gray;
       font-style: italic;
     }
-  </style>
 
-  <!-- links to sections on this page  -->
-  <!-- make this section position sticky so that it pins to the top left of the page regardless of scroll -->
+    .two-by-one {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      grid-gap: 20px;
+      align-items: center;
+    }
+  </style>
   <div class="row sticky-top">
     <div>
-      <ul>
+      <sl-drawer label="Index" class="drawer-overview">
+        <li><a href="#top" onclick="smoothScroll(event)">Top</a></li>
         <li><a href="#intro" onclick="smoothScroll(event)">Introduction</a></li>
-        <li><a href=" #setup" onclick="smoothScroll(event)">Setup the HAC App</a></li>
-        <li><a href=" #login" onclick="smoothScroll(event)">Login to app</a></li>
-      </ul>
+        <li><a href="#login" onclick="smoothScroll(event)">Log in</a></li>
+      </sl-drawer>
+      <sl-button>Index</sl-button>
+    </div>
+    <div>
+      <h1>HAC App</h1>
     </div>
     <div>
       <input id="search" type="Search" placeholder="Search">
     </div>
   </div>
 
+
+  <script>
+
+  </script>
+
   <!-- main container for the page -->
-  <div id="app">
-    <div class="container">
-      <div class="row">
-        <div>
-          <h1>HAC App</h1>
-        </div>
-      </div>
+  <main>
+    <div id="top"></div>
 
-      <section class=" row">
-        <h2 id="intro">Introduction</h2>
-        <p>This is a guide to setting up the HAC App on your computer. The HAC App is a designed to help you work with
-          hearing aids and hearing instruments through all stages of care, from selection to order to delivery to
-          follow-up care.</p>
-      </section>
+    <section class="row">
+      <h2 id="intro">Introduction</h2>
+      <p>This is a guide to setting up the HAC App on your computer. The HAC App is a designed to help you work with
+        hearing aids and hearing instruments through all stages of care, from selection to order to delivery to
+        follow-up care.</p>
+    </section>
 
-      <section class="row">
-        <h2 id="setup">Setup the HAC App</h2>
+    <section class="row">
+      <h2 id="setup">Setup the HAC App</h2>
+      <div class="two-by-one">
         <p>Download the 'Launch HAC' shortcut from the HAC Teams files section as shown here</p>
         <div class="img-wrapper">
+
           <img src="./Images/Screenshot 2023-07-22 102629.png">
         </div>
-      </section>
+      </div>
+    </section>
 
-      <section class="row">
-        <h2 id="login">Login for first time</h2>
-        <p>Open the HAC App. When prompted for account information, use your NUID as the account name and
-          leave the password field blank.</p>
-        <ul>
-          <li>NUID: N123456*</li>
-          <li>Password: _______</li>
-        </ul>
-        <p> The next step will prompt you to create a new password. It also asks for the old password (which is blank)
-        </p>
-        <ul>
-          <li>NUID: N123456*</li>
-          <li>Enter old password</li>
-          <li>Enter a new password</li>
-          <li>Confirm the new password</li>
-        </ul>
-        <p class="italics-gray">* please use your real NUID here instead of this example.</p>
-        <div class="img-wrapper">
-          <img src="./Images/Screenshot 2023-07-22 102629.png">
+    <section class="row">
+      <h2 id="login">Login for first time</h2>
+      <div class="two-by-one">
+        <div>
+          <p>Open the HAC App. When prompted for account information, use your NUID as the account name and
+            leave the password field blank.</p>
+          <ul>
+            <li>NUID: N123456*</li>
+            <li>Password: _______</li>
+          </ul>
+          <p> The next step will prompt you to create a new password. It also asks for the old password (which is blank)
+          </p>
+          <ul>
+            <li>NUID: N123456*</li>
+            <li>Enter old password</li>
+            <li>Enter a new password</li>
+            <li>Confirm the new password</li>
+          </ul>
+          <p class="italics-gray">*Example only. Please use your real NUID here.</p>
         </div>
-      </section>
+        <div>
+          <sl-carousel pagination navigation mouse-dragging loop>
+            <sl-carousel-item>
+              <img src="./Images/Screenshot 2023-07-22 102629.png">
+            </sl-carousel-item>
+            <sl-carousel-item>
+              <img src="./Images/Screenshot 2023-07-22 102629.png">
+            </sl-carousel-item>
+          </sl-carousel>
+        </div>
+      </div>
+    </section>
 
-      <section>
-        <h2>Landing Page & Patients List</h2>
-        <p>After logging in you will arrive at the landing page. The Main button takes you to the most commonly-used
-          section.</p>
-        <p>The Patients list allows you to add new patients or work with existing hearing aid patients. The header has
-          controls for searching and adding new patients. Each row on the screen shows you basic patient info such as
-          name and MRN as well as the most recently-fitted hearing device. There are also controls to add new fitting
-          records to the patient record and a section for managing clinic associations.</p>
-      </section>
+    <section>
+      <h2>Landing Page &amp; Patients List</h2>
+      <div class="two-by-one">
+        <div>
+          <p>After logging in you will arrive at the landing page. The Main button takes you to the most commonly-used
+            section.</p>
+          <p>The Patients list allows you to add new patients or work with existing hearing aid patients. The header has
+            controls for searching and adding new patients. Each row on the screen shows you basic patient info such as
+            name and MRN as well as the most recently-fitted hearing device. There are also controls to add new fitting
+            records to the patient record and a section for managing clinic associations.</p>
+        </div>
+        <div>
+          <div>
+            <sl-carousel pagination navigation mouse-dragging loop>
+              <sl-carousel-item>
+                <img src="./Images/Screenshot 2023-07-22 102629.png">
+              </sl-carousel-item>
+              <sl-carousel-item>
+                <img src="./Images/Screenshot 2023-07-22 102629.png">
+              </sl-carousel-item>
+            </sl-carousel>
+          </div>
+        </div>
+      </div>
+    </section>
 
-      <section>
-        <h2>Patients List</h2>
-        <p>After adding a new patient or finding the patient via search, you can enter the most recent fitting record by
-          clicking on the patient or device name . If the record is empty you will be asked if you want to create a new
-          fitting record. </p>
-        <p>Clicking on the MRN will copy it to the clipboard. This is handy for pasting into Epic if needing to open the
-          chart there. Also available is a Clinic Association section which is not commonly used but helps manage
-          filtering behind the scenes so that patients fitted at other clinics can be incorporated into your clinic if
-          the patient is seen at both (or more) locations. Lastly, errors or updates to the demographics can be edited
-          from this screen.</p>
-      </section>
+    <section>
+      <h2>Patients List</h2>
+      <p>After adding a new patient or finding the patient via search, you can enter the most recent fitting record by
+        clicking on the patient or device name . If the record is empty you will be asked if you want to create a new
+        fitting record. </p>
+      <p>Clicking on the MRN will copy it to the clipboard. This is handy for pasting into Epic if needing to open the
+        chart there. Also available is a Clinic Association section which is not commonly used but helps manage
+        filtering behind the scenes so that patients fitted at other clinics can be incorporated into your clinic if
+        the patient is seen at both (or more) locations. Lastly, errors or updates to the demographics can be edited
+        from this screen.</p>
+    </section>
 
-      <section>
-        <h2>Fitting Record</h2>
-        <p>The fitting record is created at the time of device consultation. The fitting record contains many important
-          dates and details about the recommended devices, clinician, clinic, insurance coverage, as well as follow-up
-          care. Each fitting record contains one or more individual hearing devices. </p>
-        <p>Wherever possible, the HAC App will fill in data automatically, such as your name and the date or date/time
-          of an action as it is performed. Other details may be auto-entered such as clinic location, license number,
-          etc. Creating a new fitting record should auto-enter many of these details when you create a new fitting
-          record. As other clinic team members work on parts of the hearing aid order, delivery, or follow-up process
-          their names and dates of actions will be logged as well. This is a powerful feature that allows us to quickly
-          see the status of a device order or follow-up in one centralized location. Another powerful feature that
-          relates to centralized data storage is that duplicate data entry is greatly reduced. For example, if one staff
-          member is responsible for checking in new devices and logging the serial numbers, they will enter the SN once
-          and it will populate anywhere we need it, such as on the Purchase Agreement or in a text blob like the one
-          used in Specialty Comments.</p>
-      </section>
+    <section>
+      <h2>Fitting Record</h2>
+      <p>The fitting record is created at the time of device consultation. The fitting record contains many important
+        dates and details about the recommended devices, clinician, clinic, insurance coverage, as well as follow-up
+        care. Each fitting record contains one or more individual hearing devices. </p>
+      <p>Wherever possible, the HAC App will fill in data automatically, such as your name and the date or date/time
+        of an action as it is performed. Other details may be auto-entered such as clinic location, license number,
+        etc. Creating a new fitting record should auto-enter many of these details when you create a new fitting
+        record. As other clinic team members work on parts of the hearing aid order, delivery, or follow-up process
+        their names and dates of actions will be logged as well. This is a powerful feature that allows us to quickly
+        see the status of a device order or follow-up in one centralized location. Another powerful feature that
+        relates to centralized data storage is that duplicate data entry is greatly reduced. For example, if one staff
+        member is responsible for checking in new devices and logging the serial numbers, they will enter the SN once
+        and it will populate anywhere we need it, such as on the Purchase Agreement or in a text blob like the one
+        used in Specialty Comments.</p>
+    </section>
 
-      <section>
-        <h2>Adding Devices</h2>
-        <p>Each device has its own section in the fitting record. You can add new devices by clicking the Add Device
-          button. This will take you to the list of devices available for fitting. You can search the list by
-          manufacturer or model name. When you find the device you want to add, click one of the add buttons to add it
-          to the fitting record for the right ear, left ear, a bilateral fitting, or 'Generic' which can be used for
-          accessories or other non-hearing aid devices. </p>
-      </section>
+    <section>
+      <h2>Adding Devices</h2>
+      <p>Each device has its own section in the fitting record. You can add new devices by clicking the Add Device
+        button. This will take you to the list of devices available for fitting. You can search the list by
+        manufacturer or model name. When you find the device you want to add, click one of the add buttons to add it
+        to the fitting record for the right ear, left ear, a bilateral fitting, or 'Generic' which can be used for
+        accessories or other non-hearing aid devices. </p>
+    </section>
 
-      <section>
-        <h2>Device Details</h2>
-        <p>
-          Each device has fields to enter the details for ordering, receipt, fitting, warranties, and other related
-          data. A single device record may be completed by more than one team member, such as device options being
-          entered by the audiologist while order and receipt details are entered by the coordinators. Certain screens
-          will automate some of these data entry tasks, such as applying today's date to the Date Ordered field for
-          multiple devices in a fitting record. Certain fields may also be used later on, after the fitting has taken
-          place, such as return for credit or date of device loss.
-        </p>
-      </section>
+    <section>
+      <h2>Device Details</h2>
+      <p>
+        Each device has fields to enter the details for ordering, receipt, fitting, warranties, and other related
+        data. A single device record may be completed by more than one team member, such as device options being
+        entered by the audiologist while order and receipt details are entered by the coordinators. Certain screens
+        will automate some of these data entry tasks, such as applying today's date to the Date Ordered field for
+        multiple devices in a fitting record. Certain fields may also be used later on, after the fitting has taken
+        place, such as return for credit or date of device loss.
+      </p>
+    </section>
 
-      <section>
-        <h2>Activity</h2>
-        <p>The activity section shows a list of activity related to this fitting. It provides a place to attach
-          comments, notes, updates, or anything else that may be useful in the management of this fitting. The most
-          helpful activity entries involve send-out repairs or other types of repairs that are not scheduled visits with
-          the audiologist. At a glance it is easy to see what was done, when it was sent out or worked on, when it came
-          back, and what needs to happen next.</p>
-      </section>
+    <section>
+      <h2>Activity</h2>
+      <p>The activity section shows a list of activity related to this fitting. It provides a place to attach
+        comments, notes, updates, or anything else that may be useful in the management of this fitting. The most
+        helpful activity entries involve send-out repairs or other types of repairs that are not scheduled visits with
+        the audiologist. At a glance it is easy to see what was done, when it was sent out or worked on, when it came
+        back, and what needs to happen next.</p>
+    </section>
 
-      <section>
-        <h2>Insurance Coverage</h2>
-        <p>The fitting screen also contains a section for entering the patient’s insurance information. Click the button
-          to see a list of current KP plans and coverages. When you find the plan, click on the name and it will attach
-          the details to the patient's fitting record and calculate the coverage on the Purchase Agreement. </p>
-      </section>
+    <section>
+      <h2>Insurance Coverage</h2>
+      <p>The fitting screen also contains a section for entering the patient’s insurance information. Click the button
+        to see a list of current KP plans and coverages. When you find the plan, click on the name and it will attach
+        the details to the patient's fitting record and calculate the coverage on the Purchase Agreement. </p>
+    </section>
 
-      <!-- end of container -->
-    </div>
-  </div>
+    <!-- end of container -->
+  </main>
 
 
 
 
   <script>
+    //function to create a smooth scroll to linked elements
     function smoothScroll(event) {
       event.preventDefault();
-      const targetId = event.target.getAttribute("href");
+      const targetId = event.currentTarget.getAttribute('href');
       const targetElement = document.querySelector(targetId);
-
-      if (targetElement) {
-        targetElement.scrollIntoView({
-          behavior: "smooth",
-          block: "start"
+      targetElement.scrollIntoView({ behavior: 'smooth' });
+      if (targetId == '#top') {
+        window.scrollTo({
+          top: 0,
+          left: 0,
+          behavior: 'smooth'
         });
       }
     }
 
-    const search = document.querySelector("#search");
-    search.addEventListener("blur", findText);
-    function findText() {
-      const searchTerm = search.value;
-      const found = window.find(searchTerm);
-    }
+
+    const drawer = document.querySelector('.drawer-overview');
+    const openButton = drawer.nextElementSibling;
+    const closeButton = drawer.querySelector('sl-button[variant="primary"]');
+
+    openButton.addEventListener('click', () => drawer.show());
+    closeButton.addEventListener('click', () => drawer.hide());
   </script>
 
 </body>
